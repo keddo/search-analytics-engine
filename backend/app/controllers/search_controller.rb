@@ -2,17 +2,52 @@ class SearchController < ApplicationController
   def create
   end
 
+  def search_summary
+    search_summary = SearchesLog.summarize_search_queries
+    render json: search_summary
+  end
+  # API endpoint to retrieve popular search terms
+  def popular_search_terms
+    search_terms = SearchesLog.group(:query).order('count DESC').limit(10).count(:id)
+    render json: search_terms
+  end
+
+  # API endpoint to retrieve search trends over time
+  def search_trends
+    search_trends = Search.group_by_day(:created_at).count
+    render json: search_trends
+  end
+
   def analytics
+    user_ip = request.remote_ip
+    @searcheslog = SearchesLog.where(user_ip: user_ip).order('count DESC')
+
+    render json: @searcheslog
   end
 
   def search
-    query = params[:query]
-    if query.present? && query.length >= 3
-      SearchLogger.log(request.remote_ip, query)
+    query = params[:query].strip # Remove leading and trailing whitespaces
+
+    # Check if the query is complete and sufficiently long
+    if query.present? && query.match?(/\w{3,}/)
+      # Increment count attribute of the search
+      search = SearchesLog.find_or_initialize_by(user_ip: request.remote_ip, text: query)
+      
+      if search.persisted?
+        # If the record already exists, increment the count
+        search.increment!(:count)
+      else
+        # If the record is newly initialized, save it
+        # SearchesLog.log(request.remote_ip, query)
+        search.save
+      end
+      # Log search query with IP address
+      
       articles = Article.where("title ILIKE ?", "%#{query}%")
       render json: { results: articles }
     else
-      render json: { error: 'Query too short' }, status: :unprocessable_entity
+      # Return error response for short or incomplete queries
+      render json: { error: 'Query too short or incomplete' }, status: :unprocessable_entity
     end
   end
 end

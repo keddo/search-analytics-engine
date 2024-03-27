@@ -4,9 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
     articles()
     const searchBox = document.getElementById('search-box');
     searchBox.addEventListener('input', function (event) {
-        const keyword = event.target.value.trim();
+        const keyword = event.target.value.trim().toLowerCase();
         filterArticles(keyword);
     });
+
+    searchBox.addEventListener('blur', function (event) {
+        const keyword = event.target.value.trim().toLowerCase();
+        recordSearch(keyword)
+    });
+
+    populateSearchAnalytics()
 });
 
 
@@ -94,3 +101,40 @@ function filterArticles(keyword) {
         console.error('No articles found in local storage.');
     }
 }
+
+
+const populateSearchAnalytics = async () => {
+    let searchHistory;
+    const response = await fetch(`${baseUrl}/api/search/analytics`)
+    searchHistory = await response.json();
+
+    // Populate the table with sample data
+    populateTable(searchHistory);
+}
+
+// Function to populate the table with search history data
+function populateTable(data) {
+    const searchTable = document.getElementById('searchTable');
+    const tbody = searchTable.querySelector('tbody');
+    // Clear previous table rows
+    tbody.innerHTML = '';
+    // Loop through the data and create table rows
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+                <td>${item.text}</td>
+                <td>${item.count}</td>
+            `;
+        tbody.appendChild(row);
+    });
+}
+
+// function to decide such that search term should be recorded or ignored
+function recordSearch(searchTerm) {
+
+    fetch(`${baseUrl}/api/articles/search/${searchTerm}`)
+        .then(res => res.json())
+        .then(data => console.log(data))
+}
+
+
