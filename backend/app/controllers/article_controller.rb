@@ -1,6 +1,7 @@
 class ArticleController < ApplicationController
   def index
-    @articles = Article.all
+     @articles = Article.all
+    
     render json: @articles
   end
 
@@ -9,6 +10,6 @@ class ArticleController < ApplicationController
   end
 
   def show
-    
+
   end
 end

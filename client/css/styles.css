@@ -4,14 +4,62 @@
     padding: 0;
 }
 
-.container {
-    max-width: 960px;
-    width: 80%;
-    margin: 2rem auto;
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
 }
 
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Search box styles */
+#search-box {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+#search-box::placeholder {
+    color: #999;
+}
+
+#search-box:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Article list and analytics styles */
 .article-insight {
-    margin-top: 1rem;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.article-insight>div {
+    flex-basis: 48%;
+    /* Adjust as needed */
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.article-insight>div h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #666;
+    font-size: 20px;
+    padding-bottom: 1rem;
+    color: #333;
 }
