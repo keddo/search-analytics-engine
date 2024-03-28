@@ -17,9 +17,9 @@ Built with Ruby on Rails as the backend API and Vanilla JavaScript for the front
 
 ## Getting Started
 ### Prerequisites
-- Ruby on Rails
-- PostgreSQL 
-- Vanilla JavaScript
+- Ruby 3.3.0
+- Rails 7.1.3
+- PostgreSQL
 
 ### Installation
 1. Clone the repository and install the dependencies:
