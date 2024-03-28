@@ -4,8 +4,10 @@ This project is a demonstration of a real-time search analytics application, dev
 
 Built with Ruby on Rails as the backend API and Vanilla JavaScript for the front-end, this application combines the power of a robust backend framework with a lightweight, efficient front-end solution.
 
+Additionally, the backend API and frontend are deployed on different servers, emphasizing the concept of building web apps with APIs in mind and maintaining a clear separation of concerns.
 
-- **Deployed App:** [Search Analytics App](#) (link to deployed application)
+
+- **Deployed App:** [Search Analytics App](https://real-time-search-analytics.netlify.app/)
 - **GitHub Repository:** [Search Analytics Engine](https://github.com/keddo/search-analytics-engine)
 
 ## Features
@@ -62,4 +64,13 @@ bundle exec rspec
 - LinkedIn: [Kedir Abdurahman](https://www.linkedin.com/in/keddo/)
 
 ## Acknowledgments
-Special thanks to the Helpjuice team for providing the opportunity to participate in this challenge.
+
+- I would like to express my gratitude to the following platforms for their invaluable support in deploying this application:
+
+- **Netlify**: I extend my sincere appreciation to Netlify for providing their free tier deployment services for the front-end Vanilla JavaScript of this project. Their platform made it seamless to deploy and manage the front-end portion of the application.
+
+- **Render**: A heartfelt thank you to Render for enabling me to deploy my backend API using Ruby on Rails. Render's efficient deployment solutions facilitated the deployment process and ensured the smooth functioning of the backend of this application.
+
+- Without the support of Netlify and Render, this project would not have been possible. Their contributions have been instrumental in bringing this application to life.
+
+- Special thanks to the Helpjuice team for providing the opportunity to participate in this challenge.
