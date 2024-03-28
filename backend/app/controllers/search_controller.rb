@@ -14,15 +14,15 @@ class SearchController < ApplicationController
 
   # API endpoint to retrieve search trends over time
   def search_trends
-    search_trends = Search.group_by_day(:created_at).count
+    search_trends = SearchesLog.group_by_day(:created_at).count
     render json: search_trends
   end
 
   def analytics
     user_ip = request.remote_ip
-    @searcheslog = SearchesLog.where(user_ip: user_ip).order('count DESC')
-
-    render json: @searcheslog
+    search_patterns = SearchesLog.analyze_search_patterns
+    
+    render json: search_patterns
   end
 
   def search
