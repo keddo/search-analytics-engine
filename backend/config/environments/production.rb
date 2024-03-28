@@ -2,9 +2,9 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.hosts << "real-time-search-analytics.up.railway.app"
   # Code is not reloaded between requests.
   config.enable_reloading = false
+  config.hosts << "real-time-search-analytics.up.railway.app"
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
