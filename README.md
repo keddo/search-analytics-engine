@@ -6,7 +6,7 @@ Built with Ruby on Rails as the backend API and Vanilla JavaScript for the front
 
 Additionally, the backend API and frontend are deployed on different servers, emphasizing the concept of building web apps with APIs in mind and maintaining a clear separation of concerns.
 
-
+![Search Analytics App](./screenshot_app.PNG)
 - **Deployed App:** [Search Analytics App](https://real-time-search-analytics.netlify.app/)
 - **GitHub Repository:** [Search Analytics Engine](https://github.com/keddo/search-analytics-engine)
 
